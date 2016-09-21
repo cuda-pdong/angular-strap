@@ -17,6 +17,7 @@ angular.module('mgcrea.ngStrap.select', ['mgcrea.ngStrap.tooltip', 'mgcrea.ngStr
       delay: 0,
       multiple: false,
       allNoneButtons: false,
+      replaceContents: true,
       sort: true,
       caretHtml: '&nbsp;<span class="caret"></span>',
       placeholder: 'Choose among the following...',
@@ -375,7 +376,9 @@ angular.module('mgcrea.ngStrap.select', ['mgcrea.ngStrap.tooltip', 'mgcrea.ngStr
             index = select.$getIndex(controller.$modelValue);
             selected = index !== -1 ? select.$scope.$matches[index].label : false;
           }
-          element.html((selected || options.placeholder) + (options.caretHtml || defaults.caretHtml));
+          if (!!options.replaceContents) {
+            element.html((selected || options.placeholder) + (options.caretHtml || defaults.caretHtml));
+          }
         };
 
         if (options.multiple) {
