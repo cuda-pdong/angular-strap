@@ -289,14 +289,14 @@ angular.module('mgcrea.ngStrap.select', ['mgcrea.ngStrap.tooltip', 'mgcrea.ngStr
       link: function postLink (scope, element, attr, controller) {
 
         // Directive options
-        var options = {scope: scope, placeholder: defaults.placeholder};
+        var options = {scope: scope, placeholder: defaults.placeholder, replaceContents: defaults.replaceContents};
         angular.forEach(['template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'container', 'delay', 'trigger', 'keyboard', 'html', 'animation', 'placeholder', 'allNoneButtons', 'maxLength', 'maxLengthHtml', 'allText', 'noneText', 'iconCheckmark', 'autoClose', 'id', 'replaceContents', 'sort', 'caretHtml', 'prefixClass', 'prefixEvent', 'toggle'], function (key) {
           if (angular.isDefined(attr[key])) options[key] = attr[key];
         });
 
         // use string regex match boolean attr falsy values, leave truthy values be
         var falseValueRegExp = /^(false|0|)$/i;
-        angular.forEach(['html', 'container', 'allNoneButtons', 'sort'], function (key) {
+        angular.forEach(['html', 'container', 'allNoneButtons', 'replaceContents', 'sort'], function (key) {
           if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) {
             options[key] = false;
           }
